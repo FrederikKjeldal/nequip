@@ -185,11 +185,11 @@ class AtomGradientOutput(GraphModuleMixin, torch.nn.Module):
         # run func
         data = self.func(data)
         atom_type_mask = {
-            "h_atomic_energy": torch.eq(data["atom_types"], 0),
-            "c_atomic_energy": torch.eq(data["atom_types"], 1),
-            "n_atomic_energy": torch.eq(data["atom_types"], 2),
-            "o_atomic_energy": torch.eq(data["atom_types"], 3),
-            "s_atomic_energy": torch.eq(data["atom_types"], 4),
+            "h_total_energy": torch.eq(data["atom_types"], 0),
+            "c_total_energy": torch.eq(data["atom_types"], 1),
+            "n_total_energy": torch.eq(data["atom_types"], 2),
+            "o_total_energy": torch.eq(data["atom_types"], 3),
+            "s_total_energy": torch.eq(data["atom_types"], 4),
         }
         grad_of = data["atomic_energy"][atom_type_mask[self.of]].sum()
         # Get grads
