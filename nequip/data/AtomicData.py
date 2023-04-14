@@ -549,6 +549,14 @@ class AtomicData(Data):
                 pbc=pbc[batch_idx] if pbc is not None else None,
             )
 
+            atomic_mask = {
+                'H_ATOM_ENERGY_KEY': torch.eq(atomic_nums[mask], 1.0),
+                'C_ATOM_ENERGY_KEY': torch.eq(atomic_nums[mask], 6.0),
+                'N_ATOM_ENERGY_KEY': torch.eq(atomic_nums[mask], 7.0),
+                'O_ATOM_ENERGY_KEY': torch.eq(atomic_nums[mask], 8.0),
+                'S_ATOM_ENERGY_KEY': torch.eq(atomic_nums[mask], 16.0)
+            }
+
             if do_calc:
                 fields = {}
                 if energies is not None:
@@ -565,7 +573,11 @@ class AtomicData(Data):
 
             # add other information
             for key in extra_fields:
-                if key in _NODE_FIELDS:
+                if key in ['H_ATOM_ENERGY_KEY', 'C_ATOM_ENERGY_KEY', 'N_ATOM_ENERGY_KEY', 'O_ATOM_ENERGY_KEY', 'S_ATOM_ENERGY_KEY']:
+                    mol.arrays[key] = (
+                        self[key][atomic_mask[key]].cpu().numpy()
+                    )
+                elif key in _NODE_FIELDS:
                     # mask it
                     mol.arrays[key] = (
                         self[key][mask].cpu().numpy().reshape(mask.sum(), -1)

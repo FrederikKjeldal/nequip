@@ -23,6 +23,101 @@ def ForceOutput(model: GraphModuleMixin) -> GradientOutput:
         sign=-1,  # force is the negative gradient
     )
 
+def HForceOutput(model: GraphModuleMixin) -> GradientOutput:
+    r"""Add forces to a model that predicts energy.
+
+    Args:
+        model: the energy model to wrap. Must have ``AtomicDataDict.TOTAL_ENERGY_KEY`` as an output.
+
+    Returns:
+        A ``GradientOutput`` wrapping ``model``.
+    """
+    if AtomicDataDict.FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has force outputs.")
+    return GradientOutput(
+        func=model,
+        of=AtomicDataDict.H_TOTAL_ENERGY_KEY,
+        wrt=AtomicDataDict.POSITIONS_KEY,
+        out_field=AtomicDataDict.H_FORCE_KEY,
+        sign=-1,  # force is the negative gradient
+    )
+
+def CForceOutput(model: GraphModuleMixin) -> GradientOutput:
+    r"""Add forces to a model that predicts energy.
+
+    Args:
+        model: the energy model to wrap. Must have ``AtomicDataDict.TOTAL_ENERGY_KEY`` as an output.
+
+    Returns:
+        A ``GradientOutput`` wrapping ``model``.
+    """
+    if AtomicDataDict.FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has force outputs.")
+    return GradientOutput(
+        func=model,
+        of=AtomicDataDict.C_TOTAL_ENERGY_KEY,
+        wrt=AtomicDataDict.POSITIONS_KEY,
+        out_field=AtomicDataDict.C_FORCE_KEY,
+        sign=-1,  # force is the negative gradient
+    )
+
+def NForceOutput(model: GraphModuleMixin) -> GradientOutput:
+    r"""Add forces to a model that predicts energy.
+
+    Args:
+        model: the energy model to wrap. Must have ``AtomicDataDict.TOTAL_ENERGY_KEY`` as an output.
+
+    Returns:
+        A ``GradientOutput`` wrapping ``model``.
+    """
+    if AtomicDataDict.FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has force outputs.")
+    return GradientOutput(
+        func=model,
+        of=AtomicDataDict.N_TOTAL_ENERGY_KEY,
+        wrt=AtomicDataDict.POSITIONS_KEY,
+        out_field=AtomicDataDict.N_FORCE_KEY,
+        sign=-1,  # force is the negative gradient
+    )
+
+def OForceOutput(model: GraphModuleMixin) -> GradientOutput:
+    r"""Add forces to a model that predicts energy.
+
+    Args:
+        model: the energy model to wrap. Must have ``AtomicDataDict.TOTAL_ENERGY_KEY`` as an output.
+
+    Returns:
+        A ``GradientOutput`` wrapping ``model``.
+    """
+    if AtomicDataDict.FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has force outputs.")
+    return GradientOutput(
+        func=model,
+        of=AtomicDataDict.O_TOTAL_ENERGY_KEY,
+        wrt=AtomicDataDict.POSITIONS_KEY,
+        out_field=AtomicDataDict.O_FORCE_KEY,
+        sign=-1,  # force is the negative gradient
+    )
+
+def SForceOutput(model: GraphModuleMixin) -> GradientOutput:
+    r"""Add forces to a model that predicts energy.
+
+    Args:
+        model: the energy model to wrap. Must have ``AtomicDataDict.TOTAL_ENERGY_KEY`` as an output.
+
+    Returns:
+        A ``GradientOutput`` wrapping ``model``.
+    """
+    if AtomicDataDict.FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has force outputs.")
+    return GradientOutput(
+        func=model,
+        of=AtomicDataDict.S_TOTAL_ENERGY_KEY,
+        wrt=AtomicDataDict.POSITIONS_KEY,
+        out_field=AtomicDataDict.S_FORCE_KEY,
+        sign=-1,  # force is the negative gradient
+    )
+
 
 def PartialForceOutput(model: GraphModuleMixin) -> GradientOutput:
     r"""Add forces and partial forces to a model that predicts energy.

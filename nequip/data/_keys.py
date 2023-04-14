@@ -49,16 +49,46 @@ EDGE_FEATURES_KEY: Final[str] = "edge_features"
 NODE_FEATURES_KEY: Final[str] = "node_features"
 NODE_ATTRS_KEY: Final[str] = "node_attrs"
 
+H_ATOM_ENERGY_KEY: Final[str] = "h_atomic_energy"
+C_ATOM_ENERGY_KEY: Final[str] = "c_atomic_energy"
+N_ATOM_ENERGY_KEY: Final[str] = "n_atomic_energy"
+O_ATOM_ENERGY_KEY: Final[str] = "o_atomic_energy"
+S_ATOM_ENERGY_KEY: Final[str] = "s_atomic_energy"
 PER_ATOM_ENERGY_KEY: Final[str] = "atomic_energy"
+H_TOTAL_ENERGY_KEY: Final[str] = "h_total_energy"
+C_TOTAL_ENERGY_KEY: Final[str] = "c_total_energy"
+N_TOTAL_ENERGY_KEY: Final[str] = "n_total_energy"
+O_TOTAL_ENERGY_KEY: Final[str] = "o_total_energy"
+S_TOTAL_ENERGY_KEY: Final[str] = "s_total_energy"
 TOTAL_ENERGY_KEY: Final[str] = "total_energy"
+H_FORCE_KEY: Final[str] = "h_forces"
+C_FORCE_KEY: Final[str] = "c_forces"
+N_FORCE_KEY: Final[str] = "n_forces"
+O_FORCE_KEY: Final[str] = "o_forces"
+S_FORCE_KEY: Final[str] = "s_forces"
 FORCE_KEY: Final[str] = "forces"
 PARTIAL_FORCE_KEY: Final[str] = "partial_forces"
 STRESS_KEY: Final[str] = "stress"
 VIRIAL_KEY: Final[str] = "virial"
 
 ALL_ENERGY_KEYS: Final[List[str]] = [
+    H_ATOM_ENERGY_KEY,
+    C_ATOM_ENERGY_KEY,
+    N_ATOM_ENERGY_KEY,
+    O_ATOM_ENERGY_KEY,
+    S_ATOM_ENERGY_KEY,
     PER_ATOM_ENERGY_KEY,
+    H_TOTAL_ENERGY_KEY,
+    C_TOTAL_ENERGY_KEY,
+    N_TOTAL_ENERGY_KEY,
+    O_TOTAL_ENERGY_KEY,
+    S_TOTAL_ENERGY_KEY,
     TOTAL_ENERGY_KEY,
+    H_FORCE_KEY,
+    C_FORCE_KEY,
+    N_FORCE_KEY,
+    O_FORCE_KEY,
+    S_FORCE_KEY,
     FORCE_KEY,
     PARTIAL_FORCE_KEY,
     STRESS_KEY,
