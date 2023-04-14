@@ -201,6 +201,7 @@ class AtomGradientOutput(GraphModuleMixin, torch.nn.Module):
             [grad_of.sum()],
             wrt_tensors,
             create_graph=self.training,  # needed to allow gradients of this output during training
+            retain_graph=True,
         )
         # return
         # grad is optional[tensor]?
