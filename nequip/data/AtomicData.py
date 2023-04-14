@@ -574,8 +574,12 @@ class AtomicData(Data):
             # add other information
             for key in extra_fields:
                 if key in ['H_ATOM_ENERGY_KEY', 'C_ATOM_ENERGY_KEY', 'N_ATOM_ENERGY_KEY', 'O_ATOM_ENERGY_KEY', 'S_ATOM_ENERGY_KEY']:
+                    if 'atomic_energy' not in extra_fields:
+                        raise ValueError(
+                            f"Atomic energies must be present"
+                        )
                     mol.arrays[key] = (
-                        self[key][atomic_mask[key]].cpu().numpy()
+                        self["atomic_energy"][atomic_mask[key]].cpu().numpy()
                     )
                 elif key in _NODE_FIELDS:
                     # mask it
