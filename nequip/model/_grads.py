@@ -53,7 +53,7 @@ def CForceOutput(model: GraphModuleMixin) -> GradientOutput:
     """
     if AtomicDataDict.FORCE_KEY in model.irreps_out:
         raise ValueError("This model already has force outputs.")
-    return GradientOutput(
+    return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.C_TOTAL_ENERGY_KEY,
         wrt=AtomicDataDict.POSITIONS_KEY,
@@ -72,7 +72,7 @@ def NForceOutput(model: GraphModuleMixin) -> GradientOutput:
     """
     if AtomicDataDict.FORCE_KEY in model.irreps_out:
         raise ValueError("This model already has force outputs.")
-    return GradientOutput(
+    return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.N_TOTAL_ENERGY_KEY,
         wrt=AtomicDataDict.POSITIONS_KEY,
@@ -91,7 +91,7 @@ def OForceOutput(model: GraphModuleMixin) -> GradientOutput:
     """
     if AtomicDataDict.FORCE_KEY in model.irreps_out:
         raise ValueError("This model already has force outputs.")
-    return GradientOutput(
+    return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.O_TOTAL_ENERGY_KEY,
         wrt=AtomicDataDict.POSITIONS_KEY,
@@ -110,7 +110,7 @@ def SForceOutput(model: GraphModuleMixin) -> GradientOutput:
     """
     if AtomicDataDict.FORCE_KEY in model.irreps_out:
         raise ValueError("This model already has force outputs.")
-    return GradientOutput(
+    return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.S_TOTAL_ENERGY_KEY,
         wrt=AtomicDataDict.POSITIONS_KEY,
