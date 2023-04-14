@@ -1,4 +1,4 @@
-from nequip.nn import GraphModuleMixin, GradientOutput
+from nequip.nn import GraphModuleMixin, GradientOutput, AtomGradientOutput
 from nequip.nn import PartialForceOutput as PartialForceOutputModule
 from nequip.nn import StressOutput as StressOutputModule
 from nequip.data import AtomicDataDict
@@ -34,7 +34,7 @@ def HForceOutput(model: GraphModuleMixin) -> GradientOutput:
     """
     if AtomicDataDict.FORCE_KEY in model.irreps_out:
         raise ValueError("This model already has force outputs.")
-    return GradientOutput(
+    return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.H_TOTAL_ENERGY_KEY,
         wrt=AtomicDataDict.POSITIONS_KEY,
