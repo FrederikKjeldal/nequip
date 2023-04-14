@@ -82,10 +82,10 @@ class GradientOutput(GraphModuleMixin, torch.nn.Module):
             data[k].requires_grad_(True)
             wrt_tensors.append(data[k])
         # run func
+        data = self.func(data)
         for key in data:
             print(key)
             print(data[key])
-        data = self.func(data)
         # Get grads
         grads = torch.autograd.grad(
             # TODO:
