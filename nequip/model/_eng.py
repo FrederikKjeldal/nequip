@@ -134,6 +134,51 @@ def EnergyModel(
         ),
     )
 
+    layers["h_total_energy_sum"] = (
+        AtomwiseReduce,
+        dict(
+            reduce="sum",
+            field=AtomicDataDict.H_ATOM_ENERGY_KEY,
+            out_field=AtomicDataDict.H_TOTAL_ENERGY_KEY,
+        ),
+    )
+
+    layers["c_total_energy_sum"] = (
+        AtomwiseReduce,
+        dict(
+            reduce="sum",
+            field=AtomicDataDict.C_ATOM_ENERGY_KEY,
+            out_field=AtomicDataDict.C_TOTAL_ENERGY_KEY,
+        ),
+    )
+
+    layers["n_total_energy_sum"] = (
+        AtomwiseReduce,
+        dict(
+            reduce="sum",
+            field=AtomicDataDict.N_ATOM_ENERGY_KEY,
+            out_field=AtomicDataDict.N_TOTAL_ENERGY_KEY,
+        ),
+    )
+
+    layers["o_total_energy_sum"] = (
+        AtomwiseReduce,
+        dict(
+            reduce="sum",
+            field=AtomicDataDict.O_ATOM_ENERGY_KEY,
+            out_field=AtomicDataDict.O_TOTAL_ENERGY_KEY,
+        ),
+    )
+
+    layers["s_total_energy_sum"] = (
+        AtomwiseReduce,
+        dict(
+            reduce="sum",
+            field=AtomicDataDict.S_ATOM_ENERGY_KEY,
+            out_field=AtomicDataDict.S_TOTAL_ENERGY_KEY,
+        ),
+    )
+
     return SequentialGraphNetwork.from_parameters(
         shared_params=config,
         layers=layers,
