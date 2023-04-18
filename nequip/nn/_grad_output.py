@@ -92,6 +92,7 @@ class GradientOutput(GraphModuleMixin, torch.nn.Module):
             [data[self.of].sum()],
             wrt_tensors,
             create_graph=self.training,  # needed to allow gradients of this output during training
+            retain_graph=True,
         )
         # return
         # grad is optional[tensor]?
