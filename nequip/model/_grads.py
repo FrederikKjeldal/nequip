@@ -32,8 +32,8 @@ def HForceOutput(model: GraphModuleMixin) -> GradientOutput:
     Returns:
         A ``GradientOutput`` wrapping ``model``.
     """
-    if AtomicDataDict.FORCE_KEY in model.irreps_out:
-        raise ValueError("This model already has force outputs.")
+    if AtomicDataDict.H_FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has H force outputs.")
     return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.H_TOTAL_ENERGY_KEY,
@@ -51,8 +51,8 @@ def CForceOutput(model: GraphModuleMixin) -> GradientOutput:
     Returns:
         A ``GradientOutput`` wrapping ``model``.
     """
-    if AtomicDataDict.FORCE_KEY in model.irreps_out:
-        raise ValueError("This model already has force outputs.")
+    if AtomicDataDict.C_FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has C force outputs.")
     return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.C_TOTAL_ENERGY_KEY,
@@ -70,8 +70,8 @@ def NForceOutput(model: GraphModuleMixin) -> GradientOutput:
     Returns:
         A ``GradientOutput`` wrapping ``model``.
     """
-    if AtomicDataDict.FORCE_KEY in model.irreps_out:
-        raise ValueError("This model already has force outputs.")
+    if AtomicDataDict.N_FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has N force outputs.")
     return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.N_TOTAL_ENERGY_KEY,
@@ -89,8 +89,8 @@ def OForceOutput(model: GraphModuleMixin) -> GradientOutput:
     Returns:
         A ``GradientOutput`` wrapping ``model``.
     """
-    if AtomicDataDict.FORCE_KEY in model.irreps_out:
-        raise ValueError("This model already has force outputs.")
+    if AtomicDataDict.O_FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has O force outputs.")
     return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.O_TOTAL_ENERGY_KEY,
@@ -108,8 +108,8 @@ def SForceOutput(model: GraphModuleMixin) -> GradientOutput:
     Returns:
         A ``GradientOutput`` wrapping ``model``.
     """
-    if AtomicDataDict.FORCE_KEY in model.irreps_out:
-        raise ValueError("This model already has force outputs.")
+    if AtomicDataDict.S_FORCE_KEY in model.irreps_out:
+        raise ValueError("This model already has S force outputs.")
     return AtomGradientOutput(
         func=model,
         of=AtomicDataDict.S_TOTAL_ENERGY_KEY,
